@@ -14,10 +14,9 @@ public class Evento implements Serializable {
 
     private String titulo;
     private String descricao;
-    private String localizacao;
     private String horario;
     private String data;
-    private String recorrente;
+    private Boolean recorrente;
 
     private Long lati;
     private Long longi;
@@ -29,9 +28,8 @@ public class Evento implements Serializable {
         return "(" + eventoId + ")" + titulo;
     }
 
-    public String locToString() {
-        return lati.toString() + longi.toString();
-    }
+    public String toLocalizacao() { return lati.toString() + longi.toString(); }
+
 
     public String getDescricao() {
         return descricao;
@@ -39,14 +37,6 @@ public class Evento implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getLocalizacao() {
-        return locToString();
-    }
-
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
     }
 
     public String getHorario() {
@@ -74,11 +64,11 @@ public class Evento implements Serializable {
     }
 
     public String getRecorrente() {
-        return recorrente;
+        return recorrente.toString();
     }
 
     public void setRecorrente(String recorrente) {
-        this.recorrente = recorrente;
+        this.recorrente = Boolean.valueOf(recorrente.toString());
     }
 
     public Long getLati() { return lati; }
@@ -88,6 +78,11 @@ public class Evento implements Serializable {
     public Long getLongi() { return longi; }
 
     public void setLongi(Long longi) { this.longi = longi; }
+
+    public String getTitulo() { return titulo; }
+
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+
 
 }
 

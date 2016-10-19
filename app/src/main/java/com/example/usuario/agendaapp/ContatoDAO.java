@@ -14,35 +14,35 @@ import java.util.List;
  */
 public class ContatoDAO extends SQLiteOpenHelper {
 
-    private static final int VERSAO = 1;
-    private static final String TABELA = "Contatos";
-    private static final String DATABASE = "Agenda";
+        private static final int VERSAO = 1;
+        private static final String TABELA = "Contatos";
+        private static final String DATABASE = "Agenda";
 
-    public ContatoDAO(Context context) {
-        super(context, DATABASE, null, VERSAO);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String ddl = "CREATE TABLE " + TABELA
-                + "(id INTEGER PRIMARY KEY,"
-                + "nome TEXT NOT NULL,"
-                + "telefone TEXT,"
-                + "email TEXT,"
-                + "site TEXT,"
-                + "endereco TEXT,"
-                + "caminhoFoto TEXT);";
-
-        db.execSQL(ddl);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion == 1){
-            String sql = "ALTER TABLE" + TABELA + "ADD COLUMN caminhoFoto TEXT;";
-            db.execSQL(sql);
+        public ContatoDAO(Context context) {
+            super(context, DATABASE, null, VERSAO);
         }
-    }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            String ddl = "CREATE TABLE " + TABELA
+                    + "(id INTEGER PRIMARY KEY,"
+                    + "nome TEXT NOT NULL,"
+                    + "telefone TEXT,"
+                    + "email TEXT,"
+                    + "site TEXT,"
+                    + "endereco TEXT,"
+                    + "caminhoFoto TEXT);";
+
+            db.execSQL(ddl);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            if (oldVersion == 1){
+                String sql = "ALTER TABLE" + TABELA + "ADD COLUMN caminhoFoto TEXT;";
+                db.execSQL(sql);
+            }
+        }
 
     public void inserirContato(Contato contato){
         ContentValues values = new ContentValues();
